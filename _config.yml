@@ -31,8 +31,8 @@ url: "https://blog.gr4ytech.net"
 github:
   username: gr4ytech # change to your github username
 
-#twitter:
-#  username: twitter_username # change to your twitter username
+twitter:
+  username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
