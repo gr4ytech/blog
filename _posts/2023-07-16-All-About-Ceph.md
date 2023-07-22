@@ -2,7 +2,7 @@
 layout: post
 date: 2023-07-16 16:00:00 -0600
 title: All About Ceph
-categories: [ceph]
+categories: [Ceph]
 tags: [ceph,cloud,openstack]
 ---
 
@@ -80,7 +80,7 @@ ceph cephadm get-pub-key
 
 Once the Ceph bootstrap process is complete, you should be greeted by this screen on the dashboard after login:
 
-![Ceph Dashboard Expand Cluster page](/assets/images/Ceph%20Dashboard%20Expand%20Cluster.png)
+![Ceph Dashboard Expand Cluster page](assets/images/Ceph%20Dashboard%20Expand%20Cluster.png)   
 
 This is where you can add additional hosts from the GUI along with managing pools, services, and OSDs. 
 
