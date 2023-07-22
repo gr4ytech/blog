@@ -28,9 +28,9 @@ In this article we will be covering:
 
 Ceph operates with 2 critical parts, RADOS and CRUSH.
 
-RADOS stands for Reliable Autonomic Distributed Object Store. This is part of how Ceph operates and is the "Operating System" part of Ceph, providing the critical functions on how to store the information and monitoring/self healing.
+1. RADOS stands for Reliable Autonomic Distributed Object Store. This is part of how Ceph operates and is the "Operating System" part of Ceph, providing the critical functions on how to store the information and monitoring/self healing.
 
-CRUSH stands for Controlled Replication Under Scalable Hashing. This is the hash algorithm used to calculate where data is stored and distributed under replication. 
+2. CRUSH stands for Controlled Replication Under Scalable Hashing. This is the hash algorithm used to calculate where data is stored and distributed under replication. 
 
 Ceph also has "monitor" nodes, which act as gateways for the data. You need an odd amount of monitor nodes on a cluster to maintain quorum. Monitor nodes ensure data integrity in case self healing is required.
 
@@ -44,7 +44,7 @@ RBD is an acronym for RADOS Block Device. This is Ceph's Block Store and it runs
 
 ### What does RGW mean?
 
-RGW is an acryonym for RADOS Gateway. This is also referred to as the Object Gateway in the Ceph Dashboard. This provides an interface for AWS S3 compatible Object storage to communicate with Ceph. It is also typically used with the Openstack Swift component for Object Storage.
+RGW is an acronym for RADOS Gateway. This is also referred to as the Object Gateway in the Ceph Dashboard. This provides an interface for AWS S3 compatible Object storage to communicate with Ceph. It is also typically used with the Openstack Swift component for Object Storage.
 
 ### What is CephFS?
 
@@ -67,7 +67,7 @@ Once cephadm is installed, the ``bootstrap`` command starts the initial process 
 cephadm bootstrap --mon-ip <ip>
 ```
 
-Replace ip with the system ip that you are installing Ceph on. The default user for the Ceph dashboard is ``admin``. If you want to customize this initial user you can pass the ``--initial-dashboard-user ""`` flag during bootstrap.
+Replace ip with the system ip that you are installing Ceph on. The default user for the Ceph dashboard is ``admin``. If you want to customize this initial user you can pass the ``--initial-dashboard-user "<insert username here>"`` flag during bootstrap.
 
 > Do *not* run the bootstrap on more than one node unless you want to create separate Ceph clusters for each node you add.
 {: .prompt-tip }
@@ -132,7 +132,7 @@ ceph osd getcrushmap -o /tmp/cm.bin
 crushtool -d /tmp/cm.bin -o /tmp/cm.bin.ascii
 ```
 
-3. Open `cm.bin.ascii` {: .filepath } in a text editor and change the line in #rules from: 
+3. Open `cm.bin.ascii`{: .filepath } in a text editor and change the line in #rules from: 
 
 ```
 step chooseleaf indep 0 type host
@@ -163,3 +163,11 @@ docker container ps -a
 ```bash
 docker restart <container id>
 ```
+
+## Resources
+
+These are some of the resources I used while building our Ceph cluster:
+
+- [Cephadm Documentation](https://docs.ceph.com/en/latest/cephadm/)
+- [Ceph Storage Recommendations (Doesn't Require Redhat account)](https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/4/html/installation_guide/red-hat-ceph-storage-considerations-and-recommendations)
+- [Changing failure domains (Requires Redhat account)](https://access.redhat.com/solutions/6518681)
