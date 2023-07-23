@@ -26,7 +26,7 @@ description: >- # used by seo meta and the atom feed
   Cybersecurity and cloud tutorials.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://blog.gr4ytech.net/"
+url: "https://blog.gr4ytech.net"
 
 github:
   username: gr4ytech # change to your github username
