@@ -3,7 +3,7 @@ layout: post
 date: 2023-07-16 16:00:00 -0600
 title: All About Ceph
 categories: [Ceph]
-tags: [ceph,cloud,openstack]
+tags: [ceph,cloud]
 ---
 
 ## Introduction
