@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2023-07-22 16:00:00 -0600
+date: 2023-08-28 8:00:00 -0400
 title: Automating Openstack Deployment with Kolla Ansible
 categories: [Openstack]
 tags: [cloud,openstack]
