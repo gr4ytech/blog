@@ -137,10 +137,14 @@ crushtool -d /tmp/cm.bin -o /tmp/cm.bin.ascii
 ```
 step chooseleaf indep 0 type host
 ```
+{: file="/tmp/cm.bin.ascii" }
+
 to:
 ```
 step chooseleaf indep 0 type osd
 ```
+{: file="/tmp/cm.bin.ascii" }
+
 
 4. Recompile the new crushmap:
 ```bash

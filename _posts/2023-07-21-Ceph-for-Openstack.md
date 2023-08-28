@@ -144,6 +144,7 @@ In the ``cinder.conf`` file, by default, Openstack will timeout a Ceph connectio
 rados_connect_timeout = -1
 rbd_flatten_volume_from_snapshot = false
 ```
+{: file="/etc/kolla/cinder.conf" }
 
 #### Glance
 
@@ -153,6 +154,7 @@ In the ``glance-api.conf`` file, there is no copy-on-write (COW) turned on by de
 [DEFAULT]
 show_image_direct_url = True
 ```
+{: file="/etc/kolla/glance-api.conf" }
 
 #### Nova
 
@@ -163,6 +165,7 @@ In the ``nova.conf`` file, the timeout for creating a new Cinder volume is incre
 block_device_allocate_retries = 300
 block_device_allocate_retries_interval = 3
 ```
+{: file="/etc/kolla/nova.conf" }
 
 ## Pitfalls
 
@@ -188,8 +191,6 @@ kolla-ansible -i <inventory> reconfigure
 ```
 
 This will reconfigure all of the Kolla Openstack containers that are deployed with the specific inventory file. To speed up the process, it might be advisable to only include the compute, networking, and control nodes in the inventory file.
-
-### 
 
 ## Resources
 
