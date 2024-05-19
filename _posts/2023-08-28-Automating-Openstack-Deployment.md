@@ -4,6 +4,8 @@ date: 2023-08-28 8:00:00 -0400
 title: Automating Openstack Deployment with Kolla Ansible
 categories: [Openstack]
 tags: [cloud,openstack]
+image: 
+    path: /assets/images/kolla.png
 ---
 
 ## Introduction
@@ -138,6 +140,14 @@ sudo firewall-cmd --zone=internal --add-port=5672/tcp --permanent
 sudo firewall-cmd --zone=internal --add-port=8775/tcp --permanent
 ```
 
+If you are running a clustered MariaDB environment, additional ports should be opened to facilitate cluster replication. If these ports are not opened, it may cause issues with replication. 
+
+```bash
+sudo firewall-cmd --zone=internal --add-port=4567/tcp --permanent
+sudo firewall-cmd --zone=internal --add-port=4568/tcp --permanent
+```
+
+
 #### Openstack Networking
 
 Networking for Openstack nodes require certain ports to be opened for OVN to properly function. They need to be installed on *all* nodes managing networking and compute.
@@ -146,7 +156,7 @@ Networking for Openstack nodes require certain ports to be opened for OVN to pro
 sudo firewall-cmd --zone=internal --add-port=6081/udp --permanent
 ```
 
-On nodes running on the networking management side (Not compute!), ports for the OVN Northbound and Southbound interfaces need to be opened.
+On nodes running on the networking management side (*not compute!*), ports for the OVN Northbound and Southbound interfaces need to be opened.
 ```bash
 sudo firewall-cmd --zone=internal --add-port=6641-6642/tcp --permanent
 ```
@@ -202,7 +212,7 @@ sudo visudo
 
 Add the kolla user permission under the "User privilege" section of the sudoers file like so:
 ```
-kolla ALL=(ALL:ALL) ALL
+kolla ALL=(ALL) ALL
 ```
 {: file="/etc/sudoers" }
 
@@ -343,27 +353,27 @@ All of these Ceph options are based on what was previously configured from the C
 #external_ceph_cephx_enabled: "yes"
 
 # Glance
-ceph_glance_keyring: "ceph.client.glance.keyring"
+{% raw %}ceph_glance_keyring: "ceph.{{ ceph_glance_user }}.keyring" {% endraw %}
 ceph_glance_user: "glance"
 ceph_glance_pool_name: "glance-images"
 # Cinder
-ceph_cinder_keyring: "ceph.client.cinder.keyring"
+{% raw %}ceph_cinder_keyring: "ceph.{{ ceph_cinder_user }}.keyring" {% endraw %}
 ceph_cinder_user: "cinder"
 ceph_cinder_pool_name: "cinder"
 # Cinder Backup
-ceph_cinder_backup_keyring: "ceph.client.cinder-backup.keyring"
+{% raw %}ceph_cinder_backup_keyring: "ceph.client.{{ ceph_cinder_backup_user }}.keyring" {% endraw %}
 ceph_cinder_backup_user: "cinder-backup"
 ceph_cinder_backup_pool_name: "backups"
 # Nova
-ceph_nova_keyring: "ceph.client.cinder.keyring"
+{% raw %}ceph_nova_keyring: "{{ ceph_cinder_keyring }}" {% endraw %}
 ceph_nova_user: "cinder"
 ceph_nova_pool_name: "adminpool"
 # Gnocchi
-#ceph_gnocchi_keyring: "ceph.client.gnocchi.keyring"
+{% raw %}#ceph_gnocchi_keyring: "ceph.client.{{ ceph_gnocchi_user }}.keyring"{% endraw %}
 #ceph_gnocchi_user: "gnocchi"
 #ceph_gnocchi_pool_name: "gnocchi"
 # Manila
-#ceph_manila_keyring: "ceph.client.manila.keyring"
+{% raw %}#ceph_manila_keyring: "ceph.client.{{ ceph_manila_user }}.keyring"{% endraw %}
 #ceph_manila_user: "manila"
 ```
 {: file="/etc/kolla/globals.yml" }
