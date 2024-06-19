@@ -80,9 +80,9 @@ ceph cephadm get-pub-key
 
 Once the Ceph bootstrap process is complete, you should be greeted by this screen on the dashboard after login:
 
-![Ceph Dashboard Expand Cluster page](/assets/images/Ceph-Dashboard-Expand-Cluster.png)   
+![Ceph Dashboard Expand Cluster page](/assets/images/all-about-ceph/Ceph-Dashboard-Expand-Cluster.png)
 
-This is where you can add additional hosts from the GUI along with managing pools, services, and OSDs. 
+This is where you can add additional hosts from the GUI along with managing pools, services, and OSDs.
 
 If you don't know what you're going for, I would suggest selecting the "Throughput-Optimized". This adds SSDs as Write Ahead Log (WAL) Drives for Hard Drives to accelerate their performance and act as a cache.
 

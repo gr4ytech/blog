@@ -5,7 +5,7 @@ title: Automating Openstack Deployment with Kolla Ansible
 categories: [Openstack]
 tags: [cloud,openstack]
 image: 
-    path: /assets/images/kolla.png
+    path: /assets/images/automating-openstack-deployment/kolla.png
 ---
 
 ## Introduction
@@ -430,7 +430,7 @@ kolla-ansible -i <inventory> prechecks
 > The prechecks command cannot detect issues in configurations if the status of the container is "Untested" in the [Kolla Support Matrix](https://docs.openstack.org/kolla/latest/support_matrix)
 {: .prompt-warning}
 
-![Kolla Ansible Prechecks successful run](/assets/images/Prechecks-Success.png)
+![Kolla Ansible Prechecks successful run](/assets/images/automating-openstack-deployment/Prechecks-Success.png)
 _A successful prechecks run_
 
 > It is normal for your deployment host to fail the passwordless sudo check depending on host configuration.
@@ -453,17 +453,17 @@ After Openstack has been deployed and if you are running Ceph, it is a good idea
 
 #### Glance
 
-![Glance image error](/assets/images/Glance-Error.png){: .left }
+![Glance image error](/assets/images/automating-openstack-deployment/Glance-Error.png){: .left }
 
 For Glance images, you will know that everything is functional when you do not see the error (left) and instead see no images (below).
 
-![Glance no images](/assets/images/Glance-No-Images.png)
+![Glance no images](/assets/images/automating-openstack-deployment/Glance-No-Images.png)
 
 #### Cinder / Cinder Backup
 
 Cinder and Cinder Backup service statuses can be found using an account with the "Admin" permissions set under System -> System Information -> Block Storage Devices.
 
-![Cinder Services Up](/assets/images/Cinder-Services.png)
+![Cinder Services Up](/assets/images/automating-openstack-deployment/Cinder-Services.png)
 
 ## Troubleshooting
 
